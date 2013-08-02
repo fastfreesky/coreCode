@@ -85,6 +85,7 @@ public abstract class FindValueInArea<K, T> {
 		for (Object a : keyArrayStart) {
 			keyArrayEnd[i++] = hashMapIPStartEnd.get(a);
 		}
+		
 	}
 
 	/**
