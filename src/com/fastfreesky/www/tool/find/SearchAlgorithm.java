@@ -3,7 +3,7 @@ package com.fastfreesky.www.tool.find;
 public class SearchAlgorithm {
 
 	/**
-	 * * 二分查找算法 * *查找符合某一区间的值,即大于当前值,小于middle+1的值区间内
+	 * * 二分查找算法 * *查找符合某一区间的值,即大于当前值,小于middle+1的值区间内(模糊匹配)
 	 * 
 	 * @param srcArray
 	 *            有序数组 *
@@ -38,6 +38,36 @@ public class SearchAlgorithm {
 		}
 	}
 
+	/**
+	 * 
+	 * @Title: binarySearchExact
+	 * @Description: TODO(这里用一句话描述这个方法的作用) 精确的匹配,只有相等时候,才返回下标,否则为-1
+	 * @param srcArray
+	 * @param des
+	 * @return int
+	 * @throws
+	 */
+	public static int binarySearchExact(Long[] srcArray, Long des) {
+
+		int low = 0;
+		int high = srcArray.length - 1;
+		while (low <= high) {
+			int middle = (low + high) / 2;
+			// 查找到最后的状态值了
+			int status = des.compareTo(srcArray[middle]);
+			if (status == 0) {
+				return middle;
+
+			} else if (status < 0) {
+				high = middle - 1;
+			} else {
+				low = middle + 1;
+			}
+
+		}
+
+		return -1;
+	}
 
 	public static int findIpInArea(Long[] srcArrayStart, Long[] srcArrayEnd,
 			Long des) {
@@ -55,6 +85,7 @@ public class SearchAlgorithm {
 			}
 		}
 	}
+
 	public static void main(String[] args) {
 
 		Long[] srcArray = { 1l, 2l, 3l, 4l, 5l, 6l, 7l, 8l, 9l, 12l };

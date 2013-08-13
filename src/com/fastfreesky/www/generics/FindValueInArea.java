@@ -16,19 +16,19 @@ import java.util.Iterator;
  */
 public abstract class FindValueInArea<K, T> {
 
-	protected HashMap<K, T> hashMapIp;
+	protected HashMap<K, T> hashMapArea;
 	protected K[] keyArrayStart;
 	protected K[] keyArrayEnd;
-	protected HashMap<K, K> hashMapIPStartEnd;
+	protected HashMap<K, K> hashMapAreaKeyStartEnd;
 
 	public FindValueInArea(int size) {
-		hashMapIp = new HashMap<K, T>(size);
-		hashMapIPStartEnd = new HashMap<K, K>(size);
+		hashMapArea = new HashMap<K, T>(size);
+		hashMapAreaKeyStartEnd = new HashMap<K, K>(size);
 	}
 
 	public FindValueInArea() {
-		hashMapIp = new HashMap<K, T>();
-		hashMapIPStartEnd = new HashMap<K, K>();
+		hashMapArea = new HashMap<K, T>();
+		hashMapAreaKeyStartEnd = new HashMap<K, K>();
 	}
 
 	/**
@@ -44,13 +44,13 @@ public abstract class FindValueInArea<K, T> {
 	 * @throws
 	 */
 	public void addData(K start, K end, T value) {
-		hashMapIp.put(start, value);
-		hashMapIPStartEnd.put(start, end);
+		hashMapArea.put(start, value);
+		hashMapAreaKeyStartEnd.put(start, end);
 	}
 
 	public void addData(K key, T value) {
-		hashMapIp.put(key, value);
-		hashMapIPStartEnd.put(key, key);
+		hashMapArea.put(key, value);
+		hashMapAreaKeyStartEnd.put(key, key);
 	}
 
 	/**
@@ -70,11 +70,11 @@ public abstract class FindValueInArea<K, T> {
 	 * @throws
 	 */
 	public void readey() {
-		int length = hashMapIPStartEnd.size();
+		int length = hashMapAreaKeyStartEnd.size();
 
 		initKSize(length);
 
-		Iterator<K> itr = hashMapIPStartEnd.keySet().iterator();
+		Iterator<K> itr = hashMapAreaKeyStartEnd.keySet().iterator();
 		int i = 0;
 		while (itr.hasNext()) {
 			keyArrayStart[i++] = itr.next();
@@ -83,7 +83,7 @@ public abstract class FindValueInArea<K, T> {
 
 		i = 0;
 		for (Object a : keyArrayStart) {
-			keyArrayEnd[i++] = hashMapIPStartEnd.get(a);
+			keyArrayEnd[i++] = hashMapAreaKeyStartEnd.get(a);
 		}
 		
 	}

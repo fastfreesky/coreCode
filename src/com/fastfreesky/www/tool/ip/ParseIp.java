@@ -2,29 +2,11 @@ package com.fastfreesky.www.tool.ip;
 
 import com.fastfreesky.www.classtype.IpValue;
 import com.fastfreesky.www.generics.FindValueInArea;
+import com.fastfreesky.www.impl.FindValueInAreaLongToTImpl;
 import com.fastfreesky.www.tool.find.SearchAlgorithm;
 import com.fastfreesky.www.tool.time.TimeDiff;
 
-public class ParseIp extends FindValueInArea<Long, IpValue<String>> {
-
-	@Override
-	protected void initKSize(int length) {
-		// TODO Auto-generated method stub
-		keyArrayStart = new Long[length];
-		keyArrayEnd = new Long[length];
-	}
-
-	@Override
-	public IpValue<String> get(Long key) {
-		// TODO Auto-generated method stub
-		int stautus = SearchAlgorithm.findIpInArea(keyArrayStart, keyArrayEnd,
-				key);
-		if (stautus == -1) {
-			return null;
-		} else {
-			return hashMapIp.get(keyArrayStart[stautus]);
-		}
-	}
+public class ParseIp extends FindValueInAreaLongToTImpl<IpValue<String>> {
 
 	public IpValue<String> getIp(Long key) {
 		return get(key);
@@ -36,7 +18,7 @@ public class ParseIp extends FindValueInArea<Long, IpValue<String>> {
 		if (stautus == -1) {
 			return null;
 		} else {
-			return hashMapIp.get(keyArrayStart[stautus]);
+			return hashMapArea.get(keyArrayStart[stautus]);
 		}
 	}
 
