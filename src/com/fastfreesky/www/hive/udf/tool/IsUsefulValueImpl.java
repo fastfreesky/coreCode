@@ -10,8 +10,8 @@ package com.fastfreesky.www.hive.udf.tool;
  */
 public class IsUsefulValueImpl extends IsUsefulValue {
 
-	public IsUsefulValueImpl(String srcFile) {
-		super(srcFile);
+	public IsUsefulValueImpl(String srcFile, boolean isLocal) {
+		super(srcFile, isLocal);
 		// TODO Auto-generated constructor stub
 	}
 
