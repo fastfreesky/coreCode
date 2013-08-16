@@ -1,5 +1,8 @@
 package com.fastfreesky.www.hive.udf.tool;
 
+import java.io.IOException;
+
+
 /**
  * 
  * @ClassName: IsUsefulValueImpl
@@ -10,7 +13,8 @@ package com.fastfreesky.www.hive.udf.tool;
  */
 public class IsUsefulValueImpl extends IsUsefulValue {
 
-	public IsUsefulValueImpl(String srcFile, boolean isLocal) {
+	public IsUsefulValueImpl(String srcFile, boolean isLocal)
+			throws IOException {
 		super(srcFile, isLocal);
 		// TODO Auto-generated constructor stub
 	}
@@ -19,11 +23,16 @@ public class IsUsefulValueImpl extends IsUsefulValue {
 	public boolean dialLine(String line) {
 		// TODO Auto-generated method stub
 		lineSplit = line.split("\t");
-		if (lineSplit.length != 2) {
+		if (lineSplit.length != 2 && lineSplit.length != 3) {
 			return false;
 		}
 
-		findValue.addData(Long.parseLong(lineSplit[0]), lineSplit[1]);
+		if (lineSplit.length == 2) {
+			findValue.addData(Long.parseLong(lineSplit[0]), lineSplit[1]);
+		} else {
+			findValue.addData(Long.parseLong(lineSplit[0]),
+					Long.parseLong(lineSplit[1]), lineSplit[2]);
+		}
 
 		return true;
 	}
@@ -36,6 +45,7 @@ public class IsUsefulValueImpl extends IsUsefulValue {
 		// TODO Auto-generated method stub
 		return findValue.get(Long.parseLong(str));
 	}
+
 
 	private String[] lineSplit;
 }

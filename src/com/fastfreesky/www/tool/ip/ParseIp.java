@@ -1,25 +1,22 @@
 package com.fastfreesky.www.tool.ip;
 
 import com.fastfreesky.www.classtype.IpValue;
-import com.fastfreesky.www.generics.FindValueInArea;
 import com.fastfreesky.www.impl.FindValueInAreaLongToTImpl;
-import com.fastfreesky.www.tool.find.SearchAlgorithm;
 import com.fastfreesky.www.tool.time.TimeDiff;
 
 public class ParseIp extends FindValueInAreaLongToTImpl<IpValue<String>> {
+
+	public ParseIp() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public IpValue<String> getIp(Long key) {
 		return get(key);
 	}
 
 	public IpValue<String> getIp(String ip) {
-		int stautus = SearchAlgorithm.findIpInArea(keyArrayStart, keyArrayEnd,
-				Ip.ipToLong(ip));
-		if (stautus == -1) {
-			return null;
-		} else {
-			return hashMapArea.get(keyArrayStart[stautus]);
-		}
+		return get(Ip.ipToLong(ip));
 	}
 
 	public static void main(String[] args) {
@@ -60,7 +57,6 @@ public class ParseIp extends FindValueInAreaLongToTImpl<IpValue<String>> {
 			ip.getIp(200l).getProvince();
 			ip.getIp(3000l).getProvince();
 			ip.getIp(25000l).getProvince();
-			ip.getIp(700000l);
 
 			// System.out.println(ip.getIp(1100l));
 			// System.out.println(ip.getIp(1234l).getProvince());
@@ -78,6 +74,35 @@ public class ParseIp extends FindValueInAreaLongToTImpl<IpValue<String>> {
 		}
 		diff2.End();
 		diff2.printTimeDiff();
+
+
+		i = 20000000;
+
+		diff2 = null;
+		diff2 = new TimeDiff();
+		diff2.Start();
+		while (i > 0) {
+			ip.getIp(3000l).getProvince();
+			ip.getIp(0l);
+			ip.getIp(200l).getProvince();
+
+			// System.out.println(ip.getIp(1100l));
+			// System.out.println(ip.getIp(1234l).getProvince());
+			// System.out.println(ip.getIp(1235l).getProvince());
+			// System.out.println(ip.getIp(1236l).getProvince());
+			// System.out.println(ip.getIp(1239l));
+			//
+			// System.out.println(ip.getIp(12342l));
+			// System.out.println(ip.getIp(12345l).getProvince());
+			// System.out.println(ip.getIp(123487l).getProvince());
+			// System.out.println(ip.getIp(123567l).getProvince());
+			// System.out.println(ip.getIp(1235670l));
+
+			i--;
+		}
+		diff2.End();
+		diff2.printTimeDiff();
+
 	}
 
 }

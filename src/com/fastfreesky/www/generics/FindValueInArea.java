@@ -12,19 +12,16 @@ import java.util.Iterator;
  * @date 2013-7-31 下午4:22:15
  * 
  * @param <K>区间数据,为Long,Integer等
- * @param <T>值类型
+ * @param <T>值类型 实现思路: 转化区间值的起始地址作为key值,只要符合区间,就通过区间的起始地址作为key,通过hashMap获取对应的值域
  */
 public abstract class FindValueInArea<K, T> {
 
+	// 存放区间的首地址及对应的Value值
 	protected HashMap<K, T> hashMapArea;
 	protected K[] keyArrayStart;
 	protected K[] keyArrayEnd;
+	// 存放区间值
 	protected HashMap<K, K> hashMapAreaKeyStartEnd;
-
-	public FindValueInArea(int size) {
-		hashMapArea = new HashMap<K, T>(size);
-		hashMapAreaKeyStartEnd = new HashMap<K, K>(size);
-	}
 
 	public FindValueInArea() {
 		hashMapArea = new HashMap<K, T>();
@@ -48,6 +45,15 @@ public abstract class FindValueInArea<K, T> {
 		hashMapAreaKeyStartEnd.put(start, end);
 	}
 
+	/**
+	 * 
+	 * @Title: addData
+	 * @Description: TODO(这里用一句话描述这个方法的作用)精确匹配,通过一个key精确匹配一个值
+	 * @param key
+	 * @param value
+	 *            void
+	 * @throws
+	 */
 	public void addData(K key, T value) {
 		hashMapArea.put(key, value);
 		hashMapAreaKeyStartEnd.put(key, key);
@@ -83,9 +89,10 @@ public abstract class FindValueInArea<K, T> {
 
 		i = 0;
 		for (Object a : keyArrayStart) {
+
 			keyArrayEnd[i++] = hashMapAreaKeyStartEnd.get(a);
 		}
-		
+
 	}
 
 	/**

@@ -2,7 +2,6 @@ package com.fastfreesky.www.impl;
 
 import com.fastfreesky.www.generics.FindValueInArea;
 import com.fastfreesky.www.tool.find.SearchAlgorithm;
-import com.fastfreesky.www.tool.ip.Ip;
 
 /**
  * 
@@ -16,10 +15,7 @@ import com.fastfreesky.www.tool.ip.Ip;
 public class FindValueInAreaLongToTImpl<T> extends FindValueInArea<Long, T> {
 
 	public FindValueInAreaLongToTImpl() {
-	}
-	
-	public FindValueInAreaLongToTImpl(int size) {
-		super(size);
+		super();
 	}
 
 	@Override
@@ -31,6 +27,7 @@ public class FindValueInAreaLongToTImpl<T> extends FindValueInArea<Long, T> {
 	}
 
 	public T get(Long key) {
+
 		// TODO Auto-generated method stub
 		int stautus = SearchAlgorithm.findIpInArea(keyArrayStart, keyArrayEnd,
 				key);

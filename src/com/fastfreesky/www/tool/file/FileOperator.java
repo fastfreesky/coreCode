@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -17,7 +18,8 @@ import com.fastfreesky.www.interfaces.DialLineI;
 
 public class FileOperator {
 
-	public static void readFromHadoopFile(String srcFile, DialLineI lineMethod) {
+	public static void readFromHadoopFile(String srcFile, DialLineI lineMethod)
+			throws IOException {
 		Configuration conf = new Configuration();
 		Path inPath = new Path(srcFile);
 
@@ -32,9 +34,6 @@ public class FileOperator {
 				// 行读数据,进行处理
 				lineMethod.dialLine(line.toString());
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			if (in != null) {
 				try {
@@ -48,7 +47,8 @@ public class FileOperator {
 
 	}
 
-	public static void readFromLocalFile(String srcFile, DialLineI lineMethod) {
+	public static void readFromLocalFile(String srcFile, DialLineI lineMethod)
+			throws IOException {
 
 		File file = new File(srcFile);
 		FileReader reader;
@@ -62,12 +62,6 @@ public class FileOperator {
 				lineMethod.dialLine(line.toString());
 			}
 
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			if (in != null) {
 				try {
@@ -79,5 +73,14 @@ public class FileOperator {
 			}
 		}
 
+	}
+
+	public static void main(String[] args) {
+		try {
+			readFromHadoopFile("D:\\input111.txt", null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
