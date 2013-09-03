@@ -75,12 +75,36 @@ public class FileOperator {
 
 	}
 
-	public static void main(String[] args) {
-		try {
-			readFromHadoopFile("D:\\input111.txt", null);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public static void mkDirs(String dirPath, boolean isLocal) {
+		if (isLocal) {
+			File file = new File(dirPath);
+			file.mkdirs();
+
+		} else {
+			try {
+				Configuration conf = new Configuration();
+				FileSystem fs = FileSystem.get(conf);
+
+				fs.mkdirs(new Path(dirPath));
+				fs.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
+
+	}
+
+	public static void main(String[] args) {
+
+		mkDirs(args[0], Boolean.parseBoolean(args[1]));
+		// try {
+		// readFromHadoopFile("D:\\input111.txt", null);
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 	}
 }

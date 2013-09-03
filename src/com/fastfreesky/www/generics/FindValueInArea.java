@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import com.fastfreesky.www.interfaces.AreaMethodI;
+
 /**
  * 
  * @ClassName: FindValueInArea
@@ -14,7 +16,7 @@ import java.util.Iterator;
  * @param <K>区间数据,为Long,Integer等
  * @param <T>值类型 实现思路: 转化区间值的起始地址作为key值,只要符合区间,就通过区间的起始地址作为key,通过hashMap获取对应的值域
  */
-public abstract class FindValueInArea<K, T> {
+public abstract class FindValueInArea<K, T> implements AreaMethodI<K, T> {
 
 	// 存放区间的首地址及对应的Value值
 	protected HashMap<K, T> hashMapArea;
@@ -75,7 +77,7 @@ public abstract class FindValueInArea<K, T> {
 	 * @Description: TODO(这里用一句话描述这个方法的作用)当数据新增完成后,调用该方法,实现初始化,之后就可以使用get方法 void
 	 * @throws
 	 */
-	public void readey() {
+	public boolean readey() {
 		int length = hashMapAreaKeyStartEnd.size();
 
 		initKSize(length);
@@ -93,6 +95,7 @@ public abstract class FindValueInArea<K, T> {
 			keyArrayEnd[i++] = hashMapAreaKeyStartEnd.get(a);
 		}
 
+		return true;
 	}
 
 	/**
