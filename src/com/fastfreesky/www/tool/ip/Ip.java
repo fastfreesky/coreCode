@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import com.fastfreesky.www.classtype.IpStartEnd;
+import com.fastfreesky.www.area.ip.classtype.IpStartEnd;
 import com.fastfreesky.www.tool.bytes.ByteUtils;
 
 public class Ip {
@@ -240,67 +240,82 @@ public class Ip {
 		// System.out.println(longToIP(29622271));
 		// System.out.println(ipStartEndChangeToIp("1.195.192.0  ",
 		// "1.195.255.255  "));
-		String fileinall = "D:\\Application\\henan.txt";
-		String fileoutall = "D:\\Application\\out\\henan.20130730.out";
-		ipMaskToIpLongFromFile(fileinall, fileoutall, false, "河南", "-", "-",
-				"电信");
-
-		String fileout = "D:\\Application\\out\\henan.details.20130730.out";
-
-		String filein = "D:\\Application\\anyang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "安阳", "-", "电信");
-
-		filein = "D:\\Application\\hebi.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "鹤壁", "-", "电信");
-
-		filein = "D:\\Application\\jiyuan.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "济源", "-", "电信");
-
-		filein = "D:\\Application\\jiaozuo.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "焦作", "-", "电信");
-
-		filein = "D:\\Application\\kaifeng.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "开封", "-", "电信");
-
-		filein = "D:\\Application\\luoyang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "洛阳", "-", "电信");
-
-		filein = "D:\\Application\\luohe.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "漯河", "-", "电信");
-
-		filein = "D:\\Application\\nanyang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "南阳", "-", "电信");
-
-		filein = "D:\\Application\\pingdingshan.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "平顶山", "-", "电信");
-
-		filein = "D:\\Application\\puyang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "濮阳", "-", "电信");
-
-		filein = "D:\\Application\\sanmenxia.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "三门峡", "-", "电信");
-
-		filein = "D:\\Application\\shangqiu.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "商丘", "-", "电信");
-
-		filein = "D:\\Application\\xinxiang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "新乡", "-", "电信");
-
-		filein = "D:\\Application\\xinyang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "信阳", "-", "电信");
-
-		filein = "D:\\Application\\xuchang.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "许昌", "-", "电信");
-
-		filein = "D:\\Application\\zhengzhou.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "郑州", "-", "电信");
-
-		filein = "D:\\Application\\zhoukou.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "周口", "-", "电信");
-
-		filein = "D:\\Application\\zhumadian.txt";
-		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "驻马店", "-", "电信");
-
+//		String fileinall = "D:\\Application\\henan.txt";
+//		String fileoutall = "D:\\Application\\out\\henan.20130730.out";
+//		ipMaskToIpLongFromFile(fileinall, fileoutall, false, "河南", "-", "-",
+//				"电信");
+//
+//		String fileout = "D:\\Application\\out\\henan.details.20130730.out";
+//
+//		String filein = "D:\\Application\\anyang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "安阳", "-", "电信");
+//
+//		filein = "D:\\Application\\hebi.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "鹤壁", "-", "电信");
+//
+//		filein = "D:\\Application\\jiyuan.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "济源", "-", "电信");
+//
+//		filein = "D:\\Application\\jiaozuo.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "焦作", "-", "电信");
+//
+//		filein = "D:\\Application\\kaifeng.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "开封", "-", "电信");
+//
+//		filein = "D:\\Application\\luoyang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "洛阳", "-", "电信");
+//
+//		filein = "D:\\Application\\luohe.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "漯河", "-", "电信");
+//
+//		filein = "D:\\Application\\nanyang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "南阳", "-", "电信");
+//
+//		filein = "D:\\Application\\pingdingshan.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "平顶山", "-", "电信");
+//
+//		filein = "D:\\Application\\puyang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "濮阳", "-", "电信");
+//
+//		filein = "D:\\Application\\sanmenxia.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "三门峡", "-", "电信");
+//
+//		filein = "D:\\Application\\shangqiu.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "商丘", "-", "电信");
+//
+//		filein = "D:\\Application\\xinxiang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "新乡", "-", "电信");
+//
+//		filein = "D:\\Application\\xinyang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "信阳", "-", "电信");
+//
+//		filein = "D:\\Application\\xuchang.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "许昌", "-", "电信");
+//
+//		filein = "D:\\Application\\zhengzhou.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "郑州", "-", "电信");
+//
+//		filein = "D:\\Application\\zhoukou.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "周口", "-", "电信");
+//
+//		filein = "D:\\Application\\zhumadian.txt";
+//		ipMaskToIpLongFromFile(filein, fileout, true, "河南", "驻马店", "-", "电信");
+		
+			
+//		System.out.println(ipStartEndChangeToIp("211.140.0.0", "211.140.191.255"));
+//		System.out.println(ipStartEndChangeToIp("211.138.112.0", "211.138.131.255"));
+//		System.out.println(ipStartEndChangeToIp("218.205.48.0", "218.205.127.255"));
+//		System.out.println(ipStartEndChangeToIp("221.131.192.0", "221.131.255.255"));
+//		System.out.println(ipStartEndChangeToIp("120.193.0.0", "120.193.63.255"));
+//		System.out.println(ipStartEndChangeToIp("120.199.0.0", "120.199.255.255"));
+//		System.out.println(ipStartEndChangeToIp("111.0.0.0", "111.3.255.255"));
+//		System.out.println(ipStartEndChangeToIp("112.10.0.0", "112.15.255.255"));
+//		System.out.println(ipStartEndChangeToIp("183.245.0.0", "183.249.255.255"));
+//		System.out.println(ipStartEndChangeToIp("117.147.0.0", "117.149.255.255"));
+//		System.out.println(ipStartEndChangeToIp("223.92.0.0", "223.95.255.255"));
+		
+		System.out.println(ipStartEndChangeToIp("39.186.0.0", "39.191.0.0/16"));
+		
 	}
 	
 	

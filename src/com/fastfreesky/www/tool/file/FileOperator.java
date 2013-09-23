@@ -14,7 +14,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.util.LineReader;
 
-import com.fastfreesky.www.interfaces.DialLineI;
+import com.fastfreesky.www.area.interfaces.DialLineI;
 
 public class FileOperator {
 
