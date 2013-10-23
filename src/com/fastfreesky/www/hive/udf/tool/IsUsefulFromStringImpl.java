@@ -51,7 +51,7 @@ public class IsUsefulFromStringImpl implements DialLineI {
 		if (lineSplit.length == 2) {
 			findValue.addData(lineSplit[0], lineSplit[1]);
 		} else {
-			findValue.addData(lineSplit[0], lineSplit[0]);
+			findValue.addData(lineSplit[0]);
 		}
 
 		return true;
